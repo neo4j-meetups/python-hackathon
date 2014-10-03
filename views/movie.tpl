@@ -28,30 +28,6 @@
         <li><a href="/person/{{name}}">{{name}}</a></li>
     % end
     </ul>
-    
-    <h2>Reviews</h2>
-    % for review in reviews:
-        <p>On {{review.date}}, {{review.name}} said...
-          <blockquote>{{review.comments}}</blockquote>
-        </p>
-    % end
-    
-    <form method="POST" action="review">
-      <h3>Submit a new review</h3>
-
-      <input type="hidden" name="title" value="{{title}}">
-
-      <label>Name:<br>
-      <input type="text" name="name" value="">
-      </label><br>
-
-      <label>Comments:<br>
-      <textarea name="comments" cols="80" rows="6"></textarea>
-      </label><br>
-
-      <input type="submit" value="Submit">
-
-    </form>
 
     <div class="footer">
       <code>(graphs)-[:ARE]->(everywhere)</code>

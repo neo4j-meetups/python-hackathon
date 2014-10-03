@@ -2,9 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 
-from calendar import month_name
-from datetime import date
-from bottle import get, post, redirect, request, run, static_file, template
+from bottle import get, run, static_file, template
 from py2neo.neo4j import GraphDatabaseService, CypherQuery
 
 
@@ -85,33 +83,8 @@ def get_movie(title):
     """
     records = CypherQuery(graph, statement).execute(T=title)
     title, released, actors, director = records[0]
-    statement = """\
-    MATCH (m:Movie)-[:REVIEW]->(r:Review) WHERE m.title = {T}
-    RETURN r.name AS name, r.comments AS comments, r.date AS date
-    """
-    reviews = CypherQuery(graph, statement).execute(T=title)
     return template("movie", title=title, released=released,
-                             actors=actors, director=director, reviews=reviews)
-
-
-@post("/movie/review")
-def post_movie_review():
-    """ Review capture and redirect to movie page.
-    """
-    title = request.forms["title"]
-    name = request.forms["name"]
-    comments = request.forms["comments"]
-    today = date.today()
-    review_date = "{d} {m} {y}".format(y=today.year,
-                                       m=month_name[today.month],
-                                       d=today.day)
-    statement = """\
-    MATCH (m:Movie) WHERE m.title = {T}
-    WITH m
-    CREATE (m)-[:REVIEW]->(r:Review {name:{N},comments:{C},date:{D}})
-    """
-    CypherQuery(graph, statement).run(T=title, N=name, C=comments, D=review_date)
-    redirect("/movie/%s" % title)
+                             actors=actors, director=director)
 
 
 if __name__ == "__main__":
