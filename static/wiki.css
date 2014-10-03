@@ -9,14 +9,16 @@ a {
 a:hover {
     text-decoration: underline;
 }
-nav {
+.header {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     color: #999999;
-    padding: 1.2em 20px 1.2em 66px;
     background: #024c7d url(/images/neo4j.png) no-repeat 20px 50%;
+}
+nav {
+    padding: 1.2em 20px 1.2em 66px;
 }
 nav a {
     color: #CCCCCC;

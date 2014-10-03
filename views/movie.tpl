@@ -8,7 +8,9 @@
 
   <body>
 
-    <nav><a href="/">Hackathon Movie Wiki</a> / <a href="/movies/">Movies</a> / <strong>{{title}}</strong></nav>
+    <div class="header">
+      <nav><a href="/">Hackathon Movie Wiki</a> / <a href="/movies/">Movies</a> / <strong>{{title}}</strong></nav>
+    </div>
 
     <h1>{{title}}</h1>
 
