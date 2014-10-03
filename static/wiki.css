@@ -35,9 +35,11 @@ form {
     margin: 2em 0;
     padding: 1em 0;
     border-top: 2px solid #EEEEEE;
-    border-bottom: 2px solid #EEEEEE;
 }
 .footer {
+    margin: 2em 0;
+    padding: 2em 0;
+    border-top: 2px solid #EEEEEE;
     text-align: center;
     color: #666666;
     font-size: small;
