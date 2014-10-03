@@ -31,14 +31,32 @@
     
     <h2>Reviews</h2>
     % for review in reviews:
-        <blockquote>{{review.comments}}</blockquote>
+        <p>On {{review.date}}, {{review.name}} said...
+          <blockquote>{{review.comments}}</blockquote>
+        </p>
     % end
+    
     <form method="POST" action="review">
-    <h3>Submit a new review</h3>
-    <input type="hidden" name="title" value="{{title}}">
-    <textarea name="comments" cols="80" rows="6"></textarea>
-    <input type="submit" value="Submit">
+      <h3>Submit a new review</h3>
+
+      <input type="hidden" name="title" value="{{title}}">
+
+      <label>Name:<br>
+      <input type="text" name="name" value="">
+      </label><br>
+
+      <label>Comments:<br>
+      <textarea name="comments" cols="80" rows="6"></textarea>
+      </label><br>
+
+      <input type="submit" value="Submit">
+
     </form>
+
+    <div class="footer">
+      <code>(graphs)-[:ARE]->(everywhere)</code>
+      <p>With &hearts; from Sweden &amp; the <a href="http://neo4j.com/community/">Neo4j Community</a></p>
+    </div>
 
   </body>
 

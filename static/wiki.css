@@ -25,10 +25,27 @@ nav strong {
     color: #FFFFFF;
 }
 blockquote {
-    background-color: #DDDDDD;
+    background-color: #EEEEEE;
     padding: 1em;
     font-family: serif;
     font-style: italic;
     color: #333333;
+}
+form {
+    margin: 2em 0;
+    padding: 1em 0;
+    border-top: 2px solid #EEEEEE;
+    border-bottom: 2px solid #EEEEEE;
+}
+.footer {
+    text-align: center;
+    color: #666666;
+    font-size: small;
+}
+.footer a {
+    color: #3F84B1;
+}
+.footer p {
+    margin: .25em 0;
 }
 
