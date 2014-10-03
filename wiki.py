@@ -86,31 +86,32 @@ def get_movie(title):
     records = CypherQuery(graph, statement).execute(T=title)
     title, released, actors, director = records[0]
     statement = """\
-    MATCH (m:Movie)-[:REVIEW]->(r:Review) WHERE m.title = {T}
-    RETURN r.name AS name, r.comments AS comments, r.date AS date
+    MATCH (m:Movie)-[:COMMENT]->(r:Comment) WHERE m.title = {T}
+    RETURN r.name AS name, r.text AS text, r.date AS date
+    ORDER BY date DESC
     """
-    reviews = CypherQuery(graph, statement).execute(T=title)
+    comments = CypherQuery(graph, statement).execute(T=title)
     return template("movie", title=title, released=released,
-                             actors=actors, director=director, reviews=reviews)
+                             actors=actors, director=director, comments=comments)
 
 
-@post("/movie/review")
-def post_movie_review():
-    """ Review capture and redirect to movie page.
+@post("/movie/comment")
+def post_movie_comment():
+    """ Capture comment and redirect to movie page.
     """
     title = request.forms["title"]
     name = request.forms["name"]
-    comments = request.forms["comments"]
+    text = request.forms["text"]
     today = date.today()
-    review_date = "{d} {m} {y}".format(y=today.year,
-                                       m=month_name[today.month],
-                                       d=today.day)
+    comment_date = "{d} {m} {y}".format(y=today.year,
+                                        m=month_name[today.month],
+                                        d=today.day)
     statement = """\
     MATCH (m:Movie) WHERE m.title = {T}
     WITH m
-    CREATE (m)-[:REVIEW]->(r:Review {name:{N},comments:{C},date:{D}})
+    CREATE (m)-[:COMMENT]->(r:Comment {name:{N},text:{C},date:{D}})
     """
-    CypherQuery(graph, statement).run(T=title, N=name, C=comments, D=review_date)
+    CypherQuery(graph, statement).run(T=title, N=name, C=text, D=comment_date)
     redirect("/movie/%s" % title)
 
 

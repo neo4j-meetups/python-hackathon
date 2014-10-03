@@ -31,15 +31,15 @@
     % end
     </ul>
     
-    <h2>Reviews</h2>
-    % for review in reviews:
-        <p>On {{review.date}}, {{review.name}} said...
-          <blockquote>{{review.comments}}</blockquote>
+    <h2>Comments</h2>
+    % for comment in comments:
+        <p>On {{comment.date}}, {{comment.name}} said...
+          <blockquote>{{comment.text}}</blockquote>
         </p>
     % end
     
-    <form method="POST" action="review">
-      <h3>Submit a new review</h3>
+    <form method="POST" action="comment">
+      <h3>Submit a new comment</h3>
 
       <input type="hidden" name="title" value="{{title}}">
 
@@ -48,7 +48,7 @@
       </label><br>
 
       <label>Comments:<br>
-      <textarea name="comments" cols="80" rows="6"></textarea>
+      <textarea name="text" cols="80" rows="6"></textarea>
       </label><br>
 
       <input type="submit" value="Submit">
