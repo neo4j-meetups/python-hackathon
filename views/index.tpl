@@ -8,7 +8,9 @@
 
   <body>
 
-    <nav><strong>Hackathon Movie Wiki</strong></nav>
+    <div class="header">
+      <nav><strong>Hackathon Movie Wiki</strong></nav>
+    </div>
 
     <h1>Hackathon Movie Wiki</h1>
     <ul>
