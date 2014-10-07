@@ -2,14 +2,14 @@
 <html>
 
   <head>
-    <title>{{title}} [{{released}}] - Hackathon Movie Wiki</title>
-    <link rel="stylesheet" href="/css/wiki.css">
+    <title>{{title}} [{{released}}] - Hackathon Movie Guide</title>
+    <link rel="stylesheet" href="/css/main.css">
   </head>
 
   <body>
 
     <div class="header">
-      <nav><a href="/">Hackathon Movie Wiki</a> / <a href="/movies/">Movies</a> / <strong>{{title}}</strong></nav>
+      <nav><a href="/">Hackathon Movie Guide</a> / <a href="/movies/">Movies</a> / <strong>{{title}}</strong></nav>
     </div>
 
     <h1>{{title}}</h1>
